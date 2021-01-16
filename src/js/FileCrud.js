@@ -5,11 +5,11 @@ class FileCrud {
         this.FILE_URL = fileUrl;
     }
 
-    async create(user){
+    async create(data){
         const fullDb = await this.read();
         const id = Date.now();
 
-        const newData = { id, ...user };
+        const newData = { id, ...data };
         fullDb.push(newData);
 
         await writeFileSync( this.FILE_URL, JSON.stringify(fullDb) );
